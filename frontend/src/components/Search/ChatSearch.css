@@ -1,0 +1,16 @@
+#search-container {
+    display: grid;
+    align-items: center;
+    grid-area: search-container;
+    background: #0048AA;
+    padding: 0 20px;
+    border-radius: 10px 0 0 0;
+    box-shadow: 0 1px 3px -1px rgba(0,0,0,0.75);
+    z-index: 1;
+    text-align: center;
+    color: white;
+    font-size:medium;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
+}
+  

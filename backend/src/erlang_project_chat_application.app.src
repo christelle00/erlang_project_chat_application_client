@@ -1,0 +1,17 @@
+{application, erlang_project_chat_application,
+ [{description, "Erlang Project Chat Application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {erlang_project_chat_application_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    cowboy,
+    jiffy
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
