@@ -10,13 +10,13 @@
 -export([start/2, stop/1]).
 
 start(_StartType, _StartArgs) ->
-    net_adm:ping('server@LAPTOP-7FQGBH4K'),
-    %chat_client:start_link("Christelle"),
+    net_adm:ping('server@Ordinateur-de-David'),
+    
     Dispatch = cowboy_router:compile([{'_',
                                        [{"/health", health_route, []},
                                        {"/login",login_route,[]}]}]),
     {ok, _} = cowboy:start_clear(http,
-                                 [{port, 8080}],
+                                 [{port, 8000}],
                                  #{env => #{dispatch => Dispatch},
                                    middlewares =>
                                        [cowboy_router,
