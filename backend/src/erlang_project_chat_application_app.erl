@@ -10,8 +10,8 @@
 -export([start/2, stop/1]).
 
 start(_StartType, _StartArgs) ->
-    net_adm:ping('server@Ordinateur-de-David'),
-    
+    net_adm:ping('server@LAPTOP-7FQGBH4K'),
+
     Dispatch = cowboy_router:compile([{'_',
                                        [{"/health", health_route, []},
                                        {"/login",login_route,[]}]}]),
