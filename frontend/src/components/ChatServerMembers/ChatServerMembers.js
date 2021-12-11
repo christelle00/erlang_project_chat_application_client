@@ -1,22 +1,30 @@
 import React from 'react';
 
 import './ChatServerMembers.css';
+import axios from 'axios';
 
 class ChatServerMembers extends React.Component {
+    state={
+        clients:[],
+    }
+
+    componentDidMount() {
+        axios.get(`http://localhost:8080/clients`)
+          .then(res => {
+            const clients = res.data;
+            this.setState({ clients: clients });
+          })
+      }
     render(){
     return (
+
         <div id="conversation-list">
-            <div className="conversation active">
-                <div className="title-text">Client1</div>
-            </div>
-            <div className="conversation">
-                <div className="title-text">Client2</div>
-            </div>
-            <div className="conversation">
-                <div className="title-text">Client3</div>
-            </div>
+        {this.state.clients.map(client =>
+            <div className="conversation" key={client.toString()}>
+                <div className="title-text">{client}</div>
+            </div>      
+            )}
         </div>
-        
     );
     }
 }
