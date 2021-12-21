@@ -15,7 +15,7 @@ class Login extends React.Component {
         this.setState({name: event.target.value});
       };
 
-     logValue = () => {
+     handleClick = () => {
         axios.post(`http://localhost:8000/login`,{
           name: this.state.name
         })
@@ -33,9 +33,9 @@ class Login extends React.Component {
           <div className="login-header">
             <h1>LOGIN</h1>
           </div>
-          <input type="text" placeholder="name" onChange={this.handleChange.bind(this)}/>
+          <input type="text" placeholder="name" onChange={this.handleChange.bind(this)} />
           <Link to="/chat">
-            <button type="button" onClick={this.logValue.bind(this)}>
+            <button type="button" onClick={this.handleClick.bind(this)}>
              login
             </button>
           </Link>
