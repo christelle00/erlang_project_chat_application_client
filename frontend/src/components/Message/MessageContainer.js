@@ -1,6 +1,7 @@
 import React from "react";
 import MessageList from "./MessageList";
 
+
 import './MessageContainer.css';
 
 class MessageContainer extends React.Component{
@@ -10,7 +11,6 @@ class MessageContainer extends React.Component{
       }
 
       createMessages(){
-        console.log(this.props.messages);
         return this.props.messages.map((message, index) =>
            <MessageList key={index} message={message["message"]} appearance={message["isothermessage"] ? "other-message": "you-message"}/>
         );

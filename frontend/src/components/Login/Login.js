@@ -15,17 +15,16 @@ class Login extends React.Component {
         this.setState({name: event.target.value});
       };
 
-     logValue = () => {
-        axios.post(`http://localhost:8000/login`,{
-          name: this.state.name
-        })
-        .then(function(response){
-          console.log(response);
-        })
-        .catch(function(error){
-          console.log(error);
-        });
-      };
+     handleClick = () => {
+      axios.post(`http://localhost:8000/login`, {
+        name: this.state.name
+      })
+      .then((response) => {
+        console.log(response);
+      }, (error) => {
+        console.log(error);
+      });
+    }
     render(){
     return (
     <div className="login-page">
@@ -35,7 +34,7 @@ class Login extends React.Component {
           </div>
           <input type="text" placeholder="name" onChange={this.handleChange.bind(this)}/>
           <Link to="/chat">
-            <button type="button" onClick={this.logValue.bind(this)}>
+            <button type="button" onClick={this.handleClick.bind(this)}>
              login
             </button>
           </Link>
