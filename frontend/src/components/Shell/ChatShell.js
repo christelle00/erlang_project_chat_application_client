@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import './ChatShell.css';
 import ChatServerMembers from '../ChatServerMembers/ChatServerMembers';
@@ -23,16 +24,25 @@ class ChatShell extends React.Component {
           //////////////////////////////////////////////
         let messages = this.state.messages;
         let current_message = this.state.current_message;
-        console.log(this.state);
+    
         if(current_message && enter){
+          axios.post(`http://localhost:8000/messages`, {
+            current_message: this.state.current_message
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
           messages = [...messages, {"message":current_message}];
-          fetch("http://localhost:8080?message=" + current_message)// message reçu par le backend
+          axios.get(`http://localhost:8000/messages`)// message reçu par le backend
           .then(res => res.json())
           .then(
             (result) => {
-              console.log(result);
+              const current_message = result.data;
               this.setState({
-                messages: [...messages, {"message":result["message"], "isothermessage":true}]// message reçu par le client devra être afficher à gauche
+                messages: [...messages, {"message":current_message, "isothermessage":true}]// message reçu par le client devra être afficher à gauche
               });
             },
             (error) => {

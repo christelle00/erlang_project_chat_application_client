@@ -61,10 +61,15 @@ handle_call({send,{Name,Message}},_From,State)->
 
 handle_call({recieve,{SenderName,Message}},_From, State)->
   io:format("~p : ~p ~n",[SenderName,Message]),
+  getMessage(Message),
   {reply, ok, State};
 
 handle_call(_Request, _From, State) ->
   {reply, ok, State}.
+
+getMessage(Message)->
+  io:format("Message, received~n"),
+  {Message}.
 
 % callbacks to remove warnings
 handle_cast(_Request, State) ->

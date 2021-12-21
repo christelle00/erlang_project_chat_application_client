@@ -6,7 +6,8 @@
 
 -export([allowed_methods/2]).
 
--export([content_types_provided/2]).
+
+-export([content_types_accepted/2]).
 
 -export([content_types_accepted/2]).
 
